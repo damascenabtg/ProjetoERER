@@ -1,0 +1,315 @@
+/* RESET BÁSICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f5f7fa;
+    color: #2d3436;
+    line-height: 1.6;
+}
+
+/* MENU FIXO NO TOPO */
+header {
+    background-color: #5a3f99;
+    padding: 1rem 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+}
+
+.logo span {
+    color: #dcd0f5;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #dcd0f5;
+}
+
+/* BANNER */
+.banner {
+    background-color: #dcd0f5;
+    padding: 80px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+/* SOBREPOSIÇÃO ESCURA */
+.overlay {
+    background: #7e62b8;
+    color: white;
+    padding: 40px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 700px;
+}
+
+.overlay span {
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+}
+
+.overlay h1 {
+    font-size: 2.8rem;
+    margin: 10px 0;
+}
+
+.overlay p {
+    margin-bottom: 25px;
+}
+
+/* BOTÃO */
+button {
+    background-color: #c0392b;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #962d22;
+}
+
+/* CONTEÚDO */
+main {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+section {
+    padding-top: 40px;
+    scroll-margin-top: 60px; /* espaço para o menu fixo não cobrir o título */
+}
+
+h2 {
+    text-align: center;
+    color: #5a3f99;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.subtitulo {
+    color: #5a3f99;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.centro {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* CARDS */
+.grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: #5a3f99;
+    margin-bottom: 10px;
+}
+
+/* CARDS LILÁS DAS SEÇÕES "O QUE SÃO?", "O QUE DIZ A LEI" E "COMO DENUNCIAR" */
+#conceitos .grid-cards .card,
+#lei .grid-cards .card,
+#denuncie .grid-cards .card {
+    background: #dcd0f5;
+}
+
+/* CARD COM BORDA NA ESQUERDA */
+.destaque {
+    border-left: 5px solid #5a3f99;
+}
+
+/* ETIQUETA DO ARTIGO DA LEI */
+.etiqueta {
+    display: inline-block;
+    background: #f3eefc;
+    color: #5a3f99;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.pena {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #c0392b;
+    margin-bottom: 10px;
+}
+
+/* GRÁFICO DE BARRAS */
+.grafico {
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.linha {
+    display: grid;
+    grid-template-columns: 150px 1fr 50px;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+.barra {
+    height: 20px;
+    background: linear-gradient(90deg, #dcd0f5, #a98ee0, #7e62b8, #5a3f99);
+    border-radius: 0 4px 4px 0;
+}
+
+.linha b {
+    text-align: right;
+}
+
+.fonte {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: #777;
+}
+
+/* GRÁFICO + DESTAQUES LADO A LADO */
+.dados-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+    align-items: start;
+}
+
+.numeros {
+    display: grid;
+    gap: 12px;
+}
+
+.numero {
+    background: linear-gradient(135deg, #7e62b8, #5a3f99);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.numero strong {
+    display: block;
+    font-size: 1.8rem;
+    line-height: 1.2;
+}
+
+.numero span {
+    font-size: 0.9rem;
+}
+
+/* TELEFONES DE DENÚNCIA */
+.telefones {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.telefone {
+    background: #c0392b;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 20px 40px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.telefone:hover {
+    background: #962d22;
+}
+
+.telefone strong {
+    display: block;
+    font-size: 2.5rem;
+}
+
+/* RODAPÉ */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: #5a3f99;
+    color: white;
+    margin-top: 50px;
+}
+
+/* CELULAR */
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .overlay h1 {
+        font-size: 2rem;
+    }
+
+    .linha {
+        grid-template-columns: 110px 1fr 45px;
+        font-size: 0.85rem;
+    }
+
+    .dados-layout {
+        grid-template-columns: 1fr;
+    }
+
+}
