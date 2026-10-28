@@ -4,7 +4,8 @@
   "private": true,
   "description": "Site do Projeto ERER - Abuso Sexual e Assédio",
   "scripts": {
-    "dev": "npx --yes live-server --port=5500 --open=index.html",
+    "dev": "npx --yes live-server . --port=5500 --open=index.html",
+    "dev:3002": "npx --yes live-server . --port=3002 --open=index.html",
     "start": "npm run dev"
   }
 }
