@@ -22,4 +22,47 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
+    // 2. Modo quiosque (feira): só ativa quando a página abre com "?quiosque" (ver iniciar.bat)
+    if (new URLSearchParams(location.search).has("quiosque")) {
+        ativarModoQuiosque();
+    }
+
 });
+
+function ativarModoQuiosque() {
+
+    // Bloqueia botão direito, seleção de texto e arrastar
+    ["contextmenu", "selectstart", "dragstart"].forEach(tipo => {
+        document.addEventListener(tipo, evento => evento.preventDefault());
+    });
+
+    // Bloqueia F12, Ctrl+P/S/U e as ferramentas do desenvolvedor (Ctrl+Shift+I/J/C)
+    document.addEventListener("keydown", evento => {
+        const tecla = evento.key.toLowerCase();
+        const bloquear =
+            evento.key === "F12" ||
+            (evento.ctrlKey && ["p", "s", "u"].includes(tecla)) ||
+            (evento.ctrlKey && evento.shiftKey && ["i", "j", "c"].includes(tecla));
+
+        if (bloquear) {
+            evento.preventDefault();
+        }
+    });
+
+    // Volta para o início depois de alguns minutos sem uso (para o próximo visitante)
+    const MINUTOS_SEM_USO = 2;
+    let temporizador;
+
+    function reiniciarTemporizador() {
+        clearTimeout(temporizador);
+        temporizador = setTimeout(() => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }, MINUTOS_SEM_USO * 60 * 1000);
+    }
+
+    ["mousemove", "mousedown", "keydown", "wheel", "touchstart", "scroll"].forEach(tipo => {
+        document.addEventListener(tipo, reiniciarTemporizador, { passive: true });
+    });
+
+    reiniciarTemporizador();
+}
