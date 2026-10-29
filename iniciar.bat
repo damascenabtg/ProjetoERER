@@ -1,12 +1,15 @@
 @echo off
-rem Abre o site em modo quiosque no Microsoft Edge (para a feira).
-rem Para sair: Alt+F4.
+rem Liga o servidor (outros computadores da rede podem acessar)
+rem e abre o site em modo quiosque no Microsoft Edge (para a feira).
+rem Para sair do quiosque: Alt+F4. Para desligar o servidor: feche a janela dele.
 
-rem Caminho da pasta do projeto no formato de URL (barras normais)
-set "PASTA=%~dp0"
-set "PASTA=%PASTA:\=/%"
+cd /d "%~dp0"
+start "Servidor Projeto ERER" node servidor.js
+
+rem Espera o servidor ligar antes de abrir o navegador
+timeout /t 2 /nobreak >nul
 
 rem Perfil separado: garante o modo quiosque mesmo se o Edge ja estiver aberto
 set "PERFIL=%TEMP%\erer-quiosque"
 
-start "" msedge --kiosk "file:///%PASTA%index.html?quiosque" --edge-kiosk-type=fullscreen --no-first-run --user-data-dir="%PERFIL%"
+start "" msedge --kiosk "http://localhost:3001/?quiosque" --edge-kiosk-type=fullscreen --no-first-run --user-data-dir="%PERFIL%"
